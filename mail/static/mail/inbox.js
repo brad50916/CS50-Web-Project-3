@@ -6,6 +6,24 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
   document.querySelector('#compose').addEventListener('click', compose_email);
 
+  document.querySelector("#compose-form").onsubmit = function() {
+    event.preventDefault();
+    fetch('/emails', {
+      method: 'POST',
+      body: JSON.stringify({
+          recipients: document.querySelector('#compose-recipients').value,
+          subject: document.querySelector('#compose-subject').value,
+          body: document.querySelector('#compose-body').value
+      })
+    })
+    .then(response => response.json())
+    .then(result => {
+      // Print result
+      console.log(result);
+    });
+    setTimeout(function(){ load_mailbox('sent'); }, 10);
+  }
+
   // By default, load the inbox
   load_mailbox('inbox');
 });
@@ -30,4 +48,20 @@ function load_mailbox(mailbox) {
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
+
+  if(mailbox==="sent"){
+    fetch('/emails/sent')
+    .then(response => response.json())
+    .then(emails => {
+        // Print emails
+        console.log(emails);
+        emails.forEach(email => {
+          document.querySelector('#emails-view').innerHTML += `<div class="sent"><h4 class="recipients">${email.recipients}</h4>
+          <span class="subject">${email.subject.charAt(0).toUpperCase() + email.subject.slice(1)}</span>
+          <span class="time">${email.timestamp}</span></div>`
+          
+        });
+        // ... do something else with emails ...
+    });
+  }
 }

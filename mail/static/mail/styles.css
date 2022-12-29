@@ -1,3 +1,19 @@
 textarea {
-    min-height: 400px;
+  min-height: 400px;
 }
+
+.recipients {
+  display: inline-block;
+}
+
+.sent {
+  border: 1px solid lightgray;
+}
+
+.time {
+  float: right;
+  text-align: right;
+  color: rgb(106, 106, 106);
+}
+
+/*# sourceMappingURL=styles.css.map */
