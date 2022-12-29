@@ -6,7 +6,7 @@ textarea {
 h5 {
     display: inline-block;
 }
-.sent {
+.view_emails {
     border: 1px solid $border;
     margin-top: 3px;
 }
@@ -16,10 +16,10 @@ h5 {
     color: rgb(106, 106, 106);
     margin-right: 5px;
 }
-.recipients, .subject, .time{
+.sender, .subject, .time{
     margin-top: 10px;
 }
-.recipients{
+.sender{
     margin-left: 5px;
 }
 .body{

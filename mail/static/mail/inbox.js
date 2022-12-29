@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Print result
       console.log(result);
     });
-    setTimeout(function(){ load_mailbox('sent'); }, 10);
+    setTimeout(function(){ load_mailbox('sent'); }, 50);
   }
   
 });
@@ -114,9 +114,13 @@ function email_content(email, help) {
 
 function view_emails(email, help) {
   const element = document.createElement('div');
-  element.innerHTML = `<h5 class="recipients">${email.recipients}</h5>
-  <span class="subject">${email.subject.charAt(0).toUpperCase() + email.subject.slice(1)}</span>
+  if(help==0)
+    element.innerHTML = `<h5 class="sender">${email.recipients}</h5> `
+  else
+    element.innerHTML = `<h5 class="sender">${email.sender}</h5> `
+  element.innerHTML += `<span class="subject">${email.subject.charAt(0).toUpperCase() + email.subject.slice(1)}</span>
   <span class="time">${email.timestamp}</span>`;
+  element.className = 'view_emails';
   if(help==1){
     if(email.read){
       element.style.cssText = 'background-color: lightgray;'
