@@ -2,18 +2,32 @@ textarea {
   min-height: 400px;
 }
 
-.recipients {
+h5 {
   display: inline-block;
 }
 
 .sent {
   border: 1px solid lightgray;
+  margin-top: 3px;
 }
 
 .time {
   float: right;
   text-align: right;
   color: rgb(106, 106, 106);
+  margin-right: 5px;
+}
+
+.recipients, .subject, .time {
+  margin-top: 10px;
+}
+
+.recipients {
+  margin-left: 5px;
+}
+
+.body {
+  white-space: pre-wrap;
 }
 
 /*# sourceMappingURL=styles.css.map */
