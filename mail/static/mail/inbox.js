@@ -52,7 +52,9 @@ function recompose_email(a,b,c,d) {
     document.querySelector('#compose-subject').value = b;
   else
     document.querySelector('#compose-subject').value = 'RE: ' + b;
-  document.querySelector('#compose-body').value = 'On '+d+ ' ' + a + ' wrote:\n\n  '+c;
+  document.querySelector('#compose-body').value = '\n\n On '+d+ ' ' + a + ' wrote:\n\n  '+c;
+  document.querySelector('#compose-body').focus();
+  document.querySelector('#compose-body').setSelectionRange(0, 0);
 }
 
 function email_content(email, help) {
